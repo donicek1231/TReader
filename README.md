@@ -45,7 +45,7 @@
 
 > 文字颜色调暗一点就更隐藏了
 
-![image-20251226115145336](C:/projects/TReader/assets/image-20251226115145336.png)
+![image-20251226115145336](assets/image-20251226115145336.png)
 
 ---
 
