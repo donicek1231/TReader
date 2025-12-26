@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaSampleVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaSampleVersion)" />
+    <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaSampleVersion)" />
+    <PackageReference Include="Avalonia.Headless.NUnit" Version="$(AvaloniaSampleVersion)" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AvaloniaEdit.TextMate\AvaloniaEdit.TextMate.csproj" />
+    <ProjectReference Include="..\..\src\AvaloniaEdit\AvaloniaEdit.csproj" />
+  </ItemGroup>
+
+</Project>

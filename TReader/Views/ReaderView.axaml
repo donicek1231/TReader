@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TReader.ViewModels"
+             xmlns:avaloniaEdit="https://github.com/avaloniaui/avaloniaedit"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+             x:Class="TReader.Views.ReaderView"
+             x:DataType="vm:ReaderViewModel">
+
+    <Design.DataContext>
+        <vm:ReaderViewModel/>
+    </Design.DataContext>
+
+    <Grid>
+        <!-- 主内容区域 -->
+        <Border Background="{Binding BackgroundBrush}" 
+                PointerPressed="OnPointerPressed">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <!-- 移除旧的菜单项，因为现在有专门的控制面板了，但保留基本导航 -->
+                    <MenuItem Header="上一章" Command="{Binding PreviousChapterCommand}"/>
+                    <MenuItem Header="下一章" Command="{Binding NextChapterCommand}"/>
+                    <MenuItem Header="目录" Command="{Binding OpenTableOfContentsCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="返回书架 / 设置" Command="{Binding BackToShelfCommand}"/>
+                </ContextMenu>
+            </Border.ContextMenu>
+            
+            <!-- 使用 AvaloniaEdit 实现虚拟化文本显示 -->
+            <avaloniaEdit:TextEditor x:Name="TextEditor"
+                                     IsReadOnly="True"
+                                     IsHitTestVisible="True"
+                                     ShowLineNumbers="False"
+                                     FontSize="{Binding FontSize}"
+                                     Foreground="{Binding ForegroundBrush}"
+                                     Background="Transparent"
+                                     WordWrap="True"
+                                     Padding="0"
+                                     HorizontalScrollBarVisibility="Disabled"
+                                     VerticalScrollBarVisibility="Hidden"/>
+        </Border>
+
+        <!-- 调整大小的边缘句柄 -->
+        <Rectangle Name="TopLeft" Tag="NorthWest" Cursor="TopLeftCorner" Width="8" Height="8" VerticalAlignment="Top" HorizontalAlignment="Left" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="TopRight" Tag="NorthEast" Cursor="TopRightCorner" Width="8" Height="8" VerticalAlignment="Top" HorizontalAlignment="Right" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="BottomLeft" Tag="SouthWest" Cursor="BottomLeftCorner" Width="8" Height="8" VerticalAlignment="Bottom" HorizontalAlignment="Left" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="BottomRight" Tag="SouthEast" Cursor="BottomRightCorner" Width="8" Height="8" VerticalAlignment="Bottom" HorizontalAlignment="Right" PointerPressed="OnResize" Fill="Transparent"/>
+        
+        <Rectangle Name="Top" Tag="North" Cursor="TopSide" Height="4" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="8,0" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="Bottom" Tag="South" Cursor="BottomSide" Height="4" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="8,0" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="Left" Tag="West" Cursor="LeftSide" Width="4" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="0,8" PointerPressed="OnResize" Fill="Transparent"/>
+        <Rectangle Name="Right" Tag="East" Cursor="RightSide" Width="4" VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,8" PointerPressed="OnResize" Fill="Transparent"/>
+    </Grid>
+</UserControl>

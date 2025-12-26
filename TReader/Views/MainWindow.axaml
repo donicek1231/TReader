@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TReader.ViewModels"
+        xmlns:views="using:TReader.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+        x:Class="TReader.Views.MainWindow"
+        x:DataType="vm:ReaderViewModel"
+        Title="TReader"
+        Width="300"
+        Height="400"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        SystemDecorations="None"
+        TransparencyLevelHint="Transparent"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False">
+
+    <Design.DataContext>
+        <vm:ReaderViewModel/>
+    </Design.DataContext>
+
+    <!-- 阅读界面容器，用于控制透明度 -->
+    <Grid x:Name="ContentContainer" Opacity="1">
+        
+        <views:ReaderView />
+        
+        <!-- 右边缘缩放区域 -->
+        <Border x:Name="ResizeRight"
+                Width="6"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Stretch"
+                Background="Transparent"
+                Cursor="RightSide"/>
+        
+        <!-- 下边缘缩放区域 -->
+        <Border x:Name="ResizeBottom"
+                Height="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Background="Transparent"
+                Cursor="BottomSide"/>
+        
+        <!-- 右下角缩放区域 -->
+        <Border x:Name="ResizeBottomRight"
+                Width="10"
+                Height="10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="Transparent"
+                Cursor="BottomRightCorner"/>
+    </Grid>
+    
+</Window>
